@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kugoo - Полный каталог электросамокатов | Официальный дилер</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.4em;
+            opacity: 0.95;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.15);
+            padding: 15px 30px;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .stat-item strong {
+            font-size: 1.5em;
+        }
+
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1.2;  ← ширина : высота (квадрат чуть вытянутый)
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.6em;
+            color: #2f3542;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .article {
+            color: #747d8c;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+        }
+
+        .specs {
+            margin: 15px 0;
+            padding: 12px 0;
+            border-top: 1px solid #dfe4ea;
+            border-bottom: 1px solid #dfe4ea;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.9em;
+        }
+
+        .spec-label {
+            color: #747d8c;
+            font-weight: 500;
+        }
+
+        .spec-value {
+            color: #2f3542;
+            font-weight: 600;
+        }
+
+        .price-block {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 2.2em;
+            color: #6c5ce7;
+            font-weight: bold;
+        }
+
+        .price-currency {
+            font-size: 0.5em;
+            vertical-align: super;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .contacts {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .contacts h2 {
+            color: #2f3542;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .phone {
+            font-size: 2.2em;
+            color: #6c5ce7;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            .catalog {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                font-size: 1.8em;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛴 KUGOO ELECTRIC</h1>
+            <p>Полный каталог электросамокатов Kugoo в России</p>
+            <div class="stats">
+                <div class="stat-item"><strong>28</strong> моделей</div>
+                <div class="stat-item">от <strong>11 000 ₽</strong></div>
+                <div class="stat-item">до <strong>135 000 ₽</strong></div>
+            </div>
+        </header>
+
+        <div class="catalog">
+            <!-- Kugoo LX 11 Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo LX 11 Plus.jpg" alt="Kugoo LX 11 Plus" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+LX+11+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo LX 11 Plus</h2>
+                    <div class="article">Артикул: 101033</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">2×1500 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">60V 31.2Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 85 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Запас хода:</span>
+                            <span class="spec-value">до 160 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Вес:</span>
+                            <span class="spec-value">47 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">11"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">135 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo LX 10 Pro -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo LX 10 Pro.jpg" alt="Kugoo LX 10 Pro" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+LX+10+Pro'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo LX 10 Pro</h2>
+                    <div class="article">Артикул: 101049</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">2×1400 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">60V 20.8Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Скорость:</span>
+                            <span class="spec-value">до 75 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 100 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">36.5 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">11"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">106 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo LX 10 Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo LX 10 Plus.jpg" alt="Kugoo LX 10 Plus" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+LX+10+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo LX 10 Plus</h2>
+                    <div class="article">Артикул: 101032</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">2×1400 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Аккумулятор:</span>
+                            <span class="spec-value">60V 20.8Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 75 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 100 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">50 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">11"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">102 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo F4 Pro -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo F4 Pro.jpg" alt="Kugoo F4 Pro" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+F4+Pro'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo F4 Pro</h2>
+                    <div class="article">Артикул: 101046</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">2×1400 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">60V 23.4Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 75 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Запас хода:</span>
+                            <span class="spec-value">до 60 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Вес:</span>
+                            <span class="spec-value">37 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">113 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo G4 Max -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo G4 Max.jpg" alt="Kugoo G4 Max" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+G4+Max'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo G4 Max</h2>
+                    <div class="article">Артикул: 101047</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">2×2000 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">60V 26Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 75 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 70 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">50 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Колеса:</span>
+                            <span class="spec-value">11"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">98 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo F3 Pro Max -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo F3 Pro Max.jpg" alt="Kugoo F3 Pro Max" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+F3+Pro+Max'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo F3 Pro Max</h2>
+                    <div class="article">Артикул: 101035</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">2×1100 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">52V 23.4Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 68 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 70 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">32.5 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">77 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo G1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo G1.jpg" alt="Kugoo G1" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+G1'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo G1</h2>
+                    <div class="article">Артикул: 101040</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">2×1000 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">52V 18.2Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 60 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 70 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">35 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">67 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo LX 9 Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo LX 9 Plus.jpg" alt="Kugoo LX 9 Plus" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+LX+9+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo LX 9 Plus</h2>
+                    <div class="article">Артикул: 101031</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">2×650 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 18.2Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 50 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 70 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">27 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">8.5"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">76 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo F3 Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo F3 Plus.jpg" alt="Kugoo F3 Plus" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+F3+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo F3 Plus</h2>
+                    <div class="article">Артикул: 101043</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">1000 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 20.8Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 50 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 80 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">30 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">60 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo M4 Pro Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo M4 Pro Plus.jpg" alt="Kugoo M4 Pro Plus" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+M4+Pro+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo M4 Pro Plus</h2>
+                    <div class="article">Артикул: 101007</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">800 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 18Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Скорость:</span>
+                            <span class="spec-value">до 45 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 45 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">27 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">44 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo F1 Pro -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo F1 Pro.jpg" alt="Kugoo F1 Pro" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+F1+Pro'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo F1 Pro</h2>
+                    <div class="article">Артикул: 101048</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">800 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 18Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 50 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Запас хода:</span>
+                            <span class="spec-value">до 48 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Вес:</span>
+                            <span class="spec-value">29.4 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">45 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo X1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo X1.jpg" alt="Kugoo X1" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+X1'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo X1</h2>
+                    <div class="article">Артикул: 101029</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">600 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Аккумулятор:</span>
+                            <span class="spec-value">48V 13Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 45 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 40 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">20 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">40 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo M4 Pro Max -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo M4 Pro Max.jpg" alt="Kugoo M4 Pro Max" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+M4+Pro+Max'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo M4 Pro Max</h2>
+                    <div class="article">Артикул: 101006</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">2×800 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 18Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 65 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Запас хода:</span>
+                            <span class="spec-value">до 50 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Полный</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">36 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">47 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo M3 Pro -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo M3 Pro.jpg" alt="Kugoo M3 Pro" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+M3+Pro'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo M3 Pro</h2>
+                    <div class="article">Артикул: 101044</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">600 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 13Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 41 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 52 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">25.5 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">45 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo Max Speed -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo Max Speed.jpg" alt="Kugoo Max Speed" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+Max+Speed'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo Max Speed</h2>
+                    <div class="article">Артикул: 101028</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">600 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Аккумулятор:</span>
+                            <span class="spec-value">48V 13Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 50 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 35 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">24 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">37 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo C1 Pro Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo C1 Pro Plus.jpg" alt="Kugoo C1 Pro Plus" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+C1+Pro+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo C1 Pro Plus</h2>
+                    <div class="article">Артикул: 101027</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">500 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 21Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 50 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 60 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">32 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">14"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">37 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo HX Pro -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo HX Pro.jpg" alt="Kugoo HX Pro" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+HX+Pro'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo HX Pro</h2>
+                    <div class="article">Артикул: 101030</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">350 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Аккумулятор:</span>
+                            <span class="spec-value">36V 10Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 30 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 43 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">15 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">31 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo C1 Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo C1 Plus.jpg" alt="Kugoo C1 Plus" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+C1+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo C1 Plus</h2>
+                    <div class="article">Артикул: 101026</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">500 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">48V 11Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Скорость:</span>
+                            <span class="spec-value">до 45 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 35 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">21 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">12"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">33 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo M2 Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo M2 Plus.jpg" alt="Kugoo M2 Plus" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+M2+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo M2 Plus</h2>
+                    <div class="article">Артикул: 101001</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">350 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">36V 8Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 32 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Запас хода:</span>
+                            <span class="spec-value">до 25 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Вес:</span>
+                            <span class="spec-value">19 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">8"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">29 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo HX Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo HX Plus.jpg" alt="Kugoo HX Plus" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+HX+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo HX Plus</h2>
+                    <div class="article">Артикул: 101039</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">249 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">36V 7.5Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 25 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Запас хода:</span>
+                            <span class="spec-value">до 40 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Вес:</span>
+                            <span class="spec-value">15 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">9"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">33 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo L2 Pro Plus -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo L2 Pro Plus.jpg" alt="Kugoo L2 Pro Plus" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+L2+Pro+Plus'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo L2 Pro Plus</h2>
+                    <div class="article">Артикул: 101045</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">350 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">36V 7.8Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 30 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 30 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">12 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">8.5"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">22 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo S4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo S4.jpg" alt="Kugoo S4" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+S4'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo S4</h2>
+                    <div class="article">Артикул: 101037</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">350 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">36V 7.5Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Скорость:</span>
+                            <span class="spec-value">до 40 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 40 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">16-21 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">10"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">35 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo S3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo S3.jpg" alt="Kugoo S3" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+S3'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo S3</h2>
+                    <div class="article">Артикул: 101012</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">350 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">36V 6Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Скорость:</span>
+                            <span class="spec-value">до 30 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 25 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">15 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">8"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">20 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo L2 Pro -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo L2 Pro.jpg" alt="Kugoo L2 Pro" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+L2+Pro'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo L2 Pro</h2>
+                    <div class="article">Артикул: 101036</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">350 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">36V 7.8Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 30 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 30 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">12 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Колеса:</span>
+                            <span class="spec-value">8.5"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">21 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo H2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo H2.jpg" alt="Kugoo H2" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+H2'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo H2</h2>
+                    <div class="article">Артикул: 101042 · Электробеговел</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">120 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">24V 4Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 23 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Запас хода:</span>
+                            <span class="spec-value">до 20 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">️ Вес:</span>
+                            <span class="spec-value">13 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">12"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">21 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo S1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo S1.jpg" alt="Kugoo S1" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+S1'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo S1</h2>
+                    <div class="article">Артикул: 101038</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label"> Мощность:</span>
+                            <span class="spec-value">350 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">36V 6Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Скорость:</span>
+                            <span class="spec-value">до 25 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 25 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">15 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">8"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">18 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo A2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo A2.jpg" alt="Kugoo A2" onerror="this.src='https://via.placeholder.com/600x400/764ba2/ffffff?text=Kugoo+A2'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo A2</h2>
+                    <div class="article">Артикул: 101034</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">150 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label"> Аккумулятор:</span>
+                            <span class="spec-value">24V 2.6Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 16 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 8 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Задний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">6.5 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">6.5"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">15 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+
+            <!-- Kugoo First -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="Kugoo First.jpg" alt="Kugoo First" onerror="this.src='https://via.placeholder.com/600x400/667eea/ffffff?text=Kugoo+First'">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title">Kugoo First</h2>
+                    <div class="article">Артикул: 101041</div>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">⚡ Мощность:</span>
+                            <span class="spec-value">100 Вт</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🔋 Аккумулятор:</span>
+                            <span class="spec-value">24V 2.5Ah</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🏃 Скорость:</span>
+                            <span class="spec-value">до 15 км/ч</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">📏 Запас хода:</span>
+                            <span class="spec-value">до 8 км</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚙️ Привод:</span>
+                            <span class="spec-value">Передний</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">⚖️ Вес:</span>
+                            <span class="spec-value">8 кг</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">🛞 Колеса:</span>
+                            <span class="spec-value">7"/6"</span>
+                        </div>
+                    </div>
+                    <div class="price-block">
+                        <div class="price">11 000 <span class="price-currency">₽</span></div>
+                    </div>
+                    <a href="tel:+79690673457" class="btn">📞 Заказать</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contacts">
+            <h2>📞 Свяжитесь с нами</h2>
+            <p>Поможем подобрать идеальный самокат под ваши задачи</p>
+            <a href="tel:+79690673457" class="phone">+7 (969) 067-34-57</a>
+            <p>📍 г. Москва, ул. Большая Семеновская 16</p>
+            <p>✉️ ajkiseo@yandex.ru</p>
+            <p>🕐 Ежедневно с 10:00 до 21:00</p>
+            <p style="margin-top: 20px; color: #747d8c; font-size: 0.9em;">✅ Все модели в наличии · ✅ Тест-драйв · ✅ Гарантия 1 год · </p>
+        </div>
+    </div>
+
+    <script>
+        // Плавная прокрутка к контактам
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.contacts').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+
+        // Анимация появления при загрузке
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 50);
+            });
+        });
+    </script>
+</body>
+</html>
